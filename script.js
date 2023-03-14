@@ -3,17 +3,17 @@
 const start = document.getElementById('start');
 const questions = document.getElementById('questions');
 
-const startTimer = 120;
+const startTimer = 2;
 let timer = startTimer * 60;
 
 const countdownEl = document.getElementById('time');
 
-setInterval(countdownTimer, 1000);
+
 
 function countdownTimer() {
     const minutes = Math.floor(timer/60);
-    let seconds = time % 60;
-    countdownEl.innerHTML = `${minutes}`;
+    let seconds = timer % 60;
+    countdownEl.innerHTML = `${minutes}:${String(seconds).padStart(2,0)}`;
     timer--; 
 }
 
@@ -25,7 +25,7 @@ function startQuiz() {
     console.log('started')
     start.classList.add('hide')
     questions.classList.remove('hide')
-    countdownTimer()
+    setInterval(countdownTimer, 1000);
 }
 
 const quizQuestions = [
