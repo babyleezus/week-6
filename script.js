@@ -1,82 +1,84 @@
-/* store questions in an array of objects 
-add event listener to start button 
-link high score sheet to high scores buttom 
-create timer
-automatically load next question when answer is selected 
-*/
+//first link start button to event listeners and get questions 
 
-let start = document.getElementById('start')
-start.addEventListener('click' function() {
-    //if start is clicked, current elements should get hidden and move on to question screen
+const start = document.getElementById('start');
+const questions = document.getElementById('questions');
 
-}) 
+const startTimer = 120;
+let timer = startTimer * 60;
 
-const questionsData [
-    {   question: What is the most used programming language in the world?,
-        a: Python,
-        b: C++,
-        c: JavaScript,
-        d: 
+const countdownEl = document.getElementById('time');
+
+setInterval(countdownTimer, 1000);
+
+function countdownTimer() {
+    const minutes = Math.floor(timer/60);
+    let seconds = time % 60;
+    countdownEl.innerHTML = `${minutes}`;
+    timer--; 
+}
+
+
+
+start.addEventListener('click', startQuiz);
+
+function startQuiz() {
+    console.log('started')
+    start.classList.add('hide')
+    questions.classList.remove('hide')
+    countdownTimer()
+}
+
+const quizQuestions = [
+    {
+        question: 'What is the programming language used in the browser?',
+        a: 'Python',
+        b: 'JavaScript',
+        c: 'C++',
+        d: 'Rust',
+        answer: b
+    },
+    {
+        question: 'Which of these is not a primitive data type?',
+        a: 'objects',
+        b: 'numbers',
+        c: 'strings',
+        d: 'booleans',
+        answer: a
+    },
+    {
+        question: 'Which of the following is NOT the correct format for a function',
+        a: 'Python',
+        b: 'JavaScript',
+        c: 'C++',
+        d: 'Rust'
+        
+    },
+    {
+        question: 'What does API stand for?',
+        a: 'Advanced Parameter Intialisation',
+        b: 'Assigned Primitive Integer',
+        c: 'Applied Prototype Integration',
+        d: 'Application Programming Interface'
+    },
+    {
+        question: 'Which of the following is NOT a type of loop in JavaScript?',
+        a: 'Do...while...',
+        b: 'For... when...',
+        c: 'While...',
+        d: 'For... in ...'
+    },
+    {
+        question: 'What method is used to ',
+        a: 'Python',
+        b: 'JavaScript',
+        c: 'C++',
+        d: 'Rust'
+    },
+    {
+        question: 'What is the programming language used in the browser?',
+        a: 'Python',
+        b: 'JavaScript',
+        c: 'C++',
+        d: 'Rust'
     }
-    {   question 2: Which of the following is not a primitive data type in javascript?
-        a: strings.
-        b: booleans,
-        c: arrays,
-        d: numbers
-    }
-    {   question 3: What would the output of the following code be?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 4: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 5: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 5: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 6: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 7: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 8: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 9: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    {   question 10: ?,
-        a: .
-        b: .
-        c: .
-        d: 
-    }
-    
 ]
