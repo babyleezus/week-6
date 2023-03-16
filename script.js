@@ -8,7 +8,8 @@ const startTimer = 2;
 let timer = startTimer * 60;
 
 const countdownEl = document.getElementById('time');
-
+let questionIndex = 0;
+let feedback = document.getElementById("feedback");
 
 //function to show timer 
 function countdownTimer() {
@@ -26,7 +27,7 @@ function startQuiz() {
     start.classList.add('hide')
     questions.classList.remove('hide')
     setInterval(countdownTimer, 1000);
-    displayQuestions(0);
+    displayQuestions(questionIndex);
 }
 
 
@@ -47,8 +48,50 @@ function displayQuestions (i) {
     c.innerHTML = quizQuestions[i].answers[2];
     d.innerHTML = quizQuestions[i].answers[3];
 
+    a.onclick = answerClickHandler;
+    b.onclick = answerClickHandler;
+    c.onclick = answerClickHandler;
+    d.onclick = answerClickHandler;
+
 }
 
+function answerClickHandler (event) {
+
+    console.log("answer clicked")
+    let button=event.target;
+    if (button.textContent !== quizQuestions[questionIndex].answer) {
+        timer -= 10;
+        if (timer < 0) {
+            timer = 0;
+        }
+        const minutes = Math.floor(timer/60);
+        let seconds = timer % 60;
+        countdownEl.innerHTML = `${minutes}:${String(seconds).padStart(2,0)}`;
+
+        feedback.textContent = "Incorrect";
+    }
+    else {
+        feedback.textContent = "Correct"; 
+    }
+    feedback.setAttribute("class", "feedback");
+    setTimeout(() => {
+        feedback.setAttribute("class", "feedback hide")
+    }, 1000);
+
+    questionIndex++;
+
+    if (questionIndex === questions.length || timer <= 0) {
+        showFinalResult ();
+    }
+    else {
+        displayQuestions(questionIndex);
+    }
+}
+
+function showFinalResult () {
+    //tbd 
+    console.log("show final result");
+}
 
 
 const quizQuestions = [
