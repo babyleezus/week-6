@@ -26,7 +26,7 @@ function startQuiz() {
     start.classList.add('hide')
     questions.classList.remove('hide')
     setInterval(countdownTimer, 1000);
-    displayQuestions(1);
+    displayQuestions(0);
 }
 
 
@@ -34,12 +34,18 @@ function startQuiz() {
 
 function displayQuestions (i) {
     const question = document.getElementById('question-title');
-    const options = document.getElementById('choices');
+    const a = document.getElementById('a');
+    const b = document.getElementById('b');
+    const c = document.getElementById('c');
+    const d = document.getElementById('d');
     let quizQuestion = quizQuestions[i].question;
-    let choices =   quizQuestions[i].answers; 
+     
                     
     question.innerHTML = quizQuestion;
-    options.innerHTML = choices
+    a.innerHTML = quizQuestions[i].answers[0];
+    b.innerHTML = quizQuestions[i].answers[1];
+    c.innerHTML = quizQuestions[i].answers[2];
+    d.innerHTML = quizQuestions[i].answers[3];
 
 }
 
